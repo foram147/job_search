@@ -1,15 +1,17 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import CompanyDetails from "../src/components/CompanyDetails";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Search from "./components/Search";
+import JobSearch from "./components/JobSearch";
 
 function App() {
   return (
-    <div className="app">
-      <Router>
-        <Route path="/companyDetails/:id" exact component={CompanyDetails} />
-      </Router>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<JobSearch />} />
+        <Route path="/:companyName" element={<Search />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
