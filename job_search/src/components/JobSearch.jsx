@@ -38,7 +38,7 @@ class JobSearch extends Component {
             <h1>Job Search</h1>
           </Col>
           <Link to={"/favorites"}>
-            <Button variant="primary">favorites😎</Button>
+            <Button variant="primary">favorites</Button>
           </Link>
           <Col xs={8} className="mx-auto mt-3">
             <Form onSubmit={this.handleSubmit}>
