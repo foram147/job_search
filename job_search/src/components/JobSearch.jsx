@@ -1,8 +1,8 @@
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Component } from "react";
 import Job from "./Job";
 import uniqid from "uniqid";
-
+import { Link } from "react-router-dom";
 class JobSearch extends Component {
   state = {
     query: "",
@@ -34,10 +34,13 @@ class JobSearch extends Component {
     return (
       <Container>
         <Row>
-          <Col xs={10} className="mx-auto my-3">
+          <Col xs={4} className="mx-auto my-3">
             <h1>Job Search</h1>
           </Col>
-          <Col xs={10} className="mx-auto">
+          <Link to={"/favorites"}>
+            <Button variant="primary">favorites😎</Button>
+          </Link>
+          <Col xs={8} className="mx-auto mt-3">
             <Form onSubmit={this.handleSubmit}>
               <Form.Control
                 type="search"
@@ -47,7 +50,7 @@ class JobSearch extends Component {
               ></Form.Control>
             </Form>
           </Col>
-          <Col xs={10} className="mx-auto mb-5">
+          <Col xs={12} className="mx-auto mb-5">
             {this.state.jobs.map((jobData) => (
               <Job key={uniqid()} data={jobData} />
             ))}
