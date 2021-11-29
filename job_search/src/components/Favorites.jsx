@@ -1,7 +1,6 @@
-import Button from "react-bootstrap/Button";
 import { FaTrash } from "react-icons/fa";
-import { Card, Col, Container, Row } from "react-bootstrap";
-import { connect } from "react-redux";
+import { Card, Col, Container, Row, Button } from "react-bootstrap";
+//import { connect } from "react-redux";
 import { removeFromFavoritesAction } from "../action/action_index";
 import { useDispatch, useSelector } from "react-redux";
 /*const mapStateToProps = (state) => ({ favorites: state.favorites.content });

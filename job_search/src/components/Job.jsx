@@ -1,19 +1,17 @@
 import React from "react";
-import { Row, Col, Card, Button, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Favorites from "./Favorites";
+import { Card, Button, Container } from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { addToFavoritesAction } from "../action/action_index";
 import { useDispatch } from "react-redux";
 
-const mapStateToProps = (state) => ({});
+//const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch) => ({
+/*const mapDispatchToProps = (dispatch) => ({
   addToFavorites: function (jobToAdd) {
     dispatch(addToFavoritesAction(jobToAdd));
   },
-});
+});*/
 
 const Job = ({ data }) => {
   const navigate = useNavigate();
