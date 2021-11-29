@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import favoriteReducer from "../reducers/favoriteReducer";
 import getJobsReducer from "../reducers/getJobsReducer";
 import thunk from "redux-thunk";
-import { persistStore, persistReducers } from "redux-persist";
+import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 
@@ -17,14 +17,27 @@ export const initialState = {
     stock: [],
   },
 };
-
+const persistConfig = {
+  key: "root",
+  storage,
+  transforms: [
+    encryptTransform({
+      secretKey: process.env.REACT_APP_ENCRYPT_KEY,
+    }),
+  ],
+};
 const bigReducer = combineReducers({
   jobs: favoriteReducer,
   data: getJobsReducer,
 });
+
+const persistedReducers = persistReducer(persistConfig, bigReducer);
+
 const configureStore = createStore(
-  bigReducer,
+  persistedReducers,
   initialState,
   aComposeThatAlwaysWorks(applyMiddleware(thunk))
 );
+
+export const persistor = persistStore(configureStore);
 export default configureStore;
